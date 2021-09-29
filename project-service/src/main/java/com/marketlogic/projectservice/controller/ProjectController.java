@@ -38,7 +38,7 @@ public class ProjectController {
 	 */
 	@PostMapping(value="/project",produces = { MediaType.APPLICATION_JSON_VALUE },consumes= { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.CREATED)
-	public  ProjectEntity createProject(@RequestBody ProjectEntity project) throws ResourceNotFoundException {
+	public  ProjectEntity createProject(@RequestBody ProjectEntity project)  {
 		return projectService.createProject(project);
 	}
 
