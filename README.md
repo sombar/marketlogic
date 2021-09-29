@@ -38,7 +38,7 @@ The requirments of the assignment is as a follows
              a. Project Create - /project - HTTP POST
              b. Project Update - /project - HTTP PUT
              c. Project Retrieve - /projects?pageNo=<optional>&pageSize=<optional> - HTTP GET ( Default to 0 and 10 respectively )
-             d. Project Delete - /project/<id> - Pass project id for deletion - HTTP DELETE ( When status is DRAFT , it is hard deleted other wise soft deleted
+             d. Project Delete - /project/<id> - Pass project id for deletion - HTTP DELETE ( When status is DRAFT , it is hard deleted other wise soft deleted )
              e. Project Publish - /project/<id>/_publish - Pass project id for publishing 
  
  
@@ -75,7 +75,9 @@ The requirments of the assignment is as a follows
  
  # Assumption
  1. There will not be any hard delete for Project Entity when in published state. A delete flag is used for mark the resource deletion.
- 2. In memory databased is used.
+ 2. Searching for all projects will retrieve only projects which are not hard or soft deleted .
+ 3. Publishing already published projects will not persist it again or send it to the search service. 
+ 4. In memory databased is used.
  
  
  # Area of Improvement
