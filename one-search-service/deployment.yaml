@@ -2,41 +2,38 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: assessment-service
-    tiers: frontend
-  name: assessment-service
+    app: search-service
+  name: search-service
 spec:
   ports:
   - name: http
-    port: 8444
-    targetPort: 8444
+    port: 8445
+    targetPort: 8445
     protocol: TCP
   selector:
-    app: assessment-service
-    tiers: frontend
+    app: search-service
   type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: assessment-service
+  name: search-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: assessment-service
+      app: search-service
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: assessment-service
-        tiers: frontend
+        app: search-service
     spec:
       containers:
-      - image: rajeevmitra/assessment-service
-        name: assessment-service
+      - image: <Container registry docker file >
+        name: search-service
         ports:
-        - containerPort: 8444
+        - containerPort: 8445
           name: http
 status: {}
