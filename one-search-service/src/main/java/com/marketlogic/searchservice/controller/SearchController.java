@@ -34,7 +34,7 @@ public class SearchController {
 	 */
 	@PostMapping(value="/create",produces = { MediaType.APPLICATION_JSON_VALUE },consumes= { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.CREATED)
-	public  SearchEntity createSearchService(@RequestBody SearchEntity searchEntity) throws ResourceNotFoundException {
+	public  SearchEntity createSearchService(@RequestBody SearchEntity searchEntity) {
 		return searchService.create(searchEntity);
 	}
 
