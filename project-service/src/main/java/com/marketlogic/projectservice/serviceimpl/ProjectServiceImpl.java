@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -54,6 +55,9 @@ public class ProjectServiceImpl implements ProjectService{
 	@Autowired
 	RestTemplate restTemplate;
 	
+	@Autowired
+	private Environment env;
+	
 	
 	
 	/**
@@ -89,10 +93,7 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public ProjectEntity createProject(ProjectEntity projectEntity) throws ResourceNotFoundException{
-		if(projectEntity.getTitle().isEmpty()) {
-			throw new ResourceNotFoundException(ServiceUtil.REQUIRED_FIELD_MISSING_DESC, ServiceUtil.INVALID_PROJECT_EX_CODE);
-		}
+	public ProjectEntity createProject(ProjectEntity projectEntity) {
 		return projectRepository.save(projectEntity);
 	}
 
@@ -115,6 +116,8 @@ public class ProjectServiceImpl implements ProjectService{
 		if(project==null) {
 			throw new ResourceNotFoundException(ServiceUtil.INVALID_PROJECT_DESC, ServiceUtil.INVALID_PROJECT_EX_CODE);
 		}
+		project.setStatus(Status.PUBLISHED);
+		updateProject(project);
 		ProjectRecordEntity projectRecord = null;
 		Optional<ProjectRecordEntity> projectRecordEntity = projectRecordRepository.findById(id);
 		if(!projectRecordEntity.isPresent()) {
@@ -133,7 +136,6 @@ public class ProjectServiceImpl implements ProjectService{
 			return (projectRecordRepository.save(projectRecord));
 		}else {
 			projectRecord = projectRecordEntity.get();
-			publish(projectRecord);
 			return projectRecord;
 		}		
 		
@@ -142,7 +144,7 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 	
 	private void publish(ProjectRecordEntity projectRecord) throws JSONException {
-	    String url = "http://localhost:8081/create";
+	    String url = env.getProperty("SEARCH_SERVICE_URL")==null?"http://localhost:8081/create": env.getProperty("SEARCH_SERVICE_URL");
 	    // create headers
 	    HttpHeaders headers = new HttpHeaders();
 	    // set `content-type` header
