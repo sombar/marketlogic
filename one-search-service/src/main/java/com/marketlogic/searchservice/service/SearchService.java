@@ -9,7 +9,7 @@ public interface SearchService {
 
 	SearchEntity create(SearchEntity searchEntity);
 
-	List<SearchEntity> find(String query);
+	List<SearchEntity> find(String query) throws ResourceNotFoundException;
 
 	
 	
