@@ -1,0 +1,6 @@
+FROM openjdk:8-jdk-alpine
+LABEL maintainer="rajeev mitra"
+EXPOSE 8444
+VOLUME /tmp
+ADD target/project-service-1.jar project-service-1.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","project-service-1.jar"]
