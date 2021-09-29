@@ -70,8 +70,8 @@ The requirments of the assignment is as a follows
  
  As per pre-requisite jdk 1.8.x is required to be installed in the m/c where these services will run .
  It can be deployed in any OS where jdk 1.8.x is istalled . It is tested in MacOS. 
- Docker files are created to containerize the services and additionally K8s deployment files are created to deploy it to any K8s cluster
- It allows to horizontally scale the application as per requirement
+ Docker files are created to containerize the services and additionally K8s deployment files are created to deploy it to any K8s cluster.
+ It allows to horizontally scale the application as per requirement.
  
  # Assumption
  1. There will not be any hard delete for Project Entity when in published state. A delete flag is used for mark the resource deletion.
