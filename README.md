@@ -77,7 +77,8 @@ The requirments of the assignment is as a follows
  1. There will not be any hard delete for Project Entity when in published state. A delete flag is used for mark the resource deletion.
  2. Searching for all projects will retrieve only projects which are not hard or soft deleted .
  3. Publishing already published projects will not persist it again or send it to the search service. 
- 4. In memory databased is used.
+ 4. Publishing will change the status of the project from DRAFT to PUBLISHED
+ 5. In memory databased is used.
  
  
  # Area of Improvement
