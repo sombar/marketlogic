@@ -30,7 +30,7 @@ public class SearchServiceImpl implements SearchService{
 	}
 
 	@Override
-	public List<SearchEntity> find(String query) {
+	public List<SearchEntity> find(String query) throws ResourceNotFoundException{
 		return searchRepository.findAllByContentContainingIgnoreCase(query);
 	}
 	
