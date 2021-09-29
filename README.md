@@ -34,6 +34,7 @@ The requirments of the assignment is as a follows
  # Exposed REST API's
  
  Following are the APIs exposed for Project service and its purpose.
+ 
              a. Project Create - /project - HTTP POST
              b. Project Update - /project - HTTP PUT
              c. Project Retrieve - /projects?pageNo=<optional>&pageSize=<optional> - HTTP GET ( Default to 0 and 10 respectively )
