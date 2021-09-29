@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.NotNull;
 
 @Entity
 @Table(name = "PROJECT")
@@ -24,6 +25,7 @@ public class ProjectEntity {
 	Long projectId;
 	 
 	@Column(name="Title")
+	@NotNull
 	private String title;
 	
 	@Column(name="Description")
@@ -35,8 +37,9 @@ public class ProjectEntity {
 	@Enumerated(EnumType.ORDINAL)
     private Type type;
 	
+	
 	@Enumerated(EnumType.ORDINAL)
-    private Status status;
+    private Status status = Status.DRAFT;
 	
 	@Column(name="Delete")
 	@JsonIgnore
