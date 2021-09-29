@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 LABEL maintainer="rajeev mitra"
-EXPOSE 8444
+EXPOSE 8445
 VOLUME /tmp
 ADD target/searchservice-1.jar searchservice-1.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","searchservice-1.jar"]
