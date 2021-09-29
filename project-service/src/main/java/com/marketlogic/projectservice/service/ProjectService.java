@@ -10,7 +10,7 @@ import com.marketlogic.projectservice.exception.ResourceNotFoundException;
 
 public interface ProjectService {
 
-	ProjectEntity createProject(ProjectEntity project) throws ResourceNotFoundException;
+	ProjectEntity createProject(ProjectEntity project) ;
 
 	ProjectEntity updateProject(ProjectEntity question) throws ResourceNotFoundException;
 
